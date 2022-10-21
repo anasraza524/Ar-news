@@ -12,7 +12,7 @@ useEffect(() => {
     const options = {
       method: 'GET',
       url: 'https://bing-news-search1.p.rapidapi.com/news',
-      params: {safeSearch: 'Off', textFormat: 'Raw'},
+      params: {safeSearch: 'on', textFormat: 'Raw'},
       headers: {
         'X-BingApis-SDK': 'true',
         'X-RapidAPI-Key': 'a6520c8da0msh46150d8e072a35bp1388d1jsn92387066c6e9',
@@ -28,7 +28,7 @@ useEffect(() => {
       console.error(error);
     });
   }
-  
+  getTrandingNews();
 })
 
   
@@ -45,22 +45,29 @@ useEffect(() => {
 
 <div className="row">
 
-  
-  <div className="column">
-  
-  {data.map(eachPost => (
-    <div className="content"key={eachPost?.name}>
-      <img src="/w3images/mountains.jpg" alt="Mountains"  />
+{data.map(eachPost => (
+  <div className="column"key={eachPost?.name}>
+
+<div className="content">
+       <img style={{height:'400px', width:'100%'}} src={
+              eachPost?.image?.thumbnail?.contentUrl
+                .replace("&pid=News", "")
+                .replace("pid=News&", "")
+                .replace("pid=News", "")
+            } alt="" />
        
-          <h3 >{eachPost?.url}</h3>
+          <h3 >{eachPost?.name}</h3>
            
-      <p  >Pulished on 15-45-2021</p>
-      <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
+          <span>{
+              moment(eachPost?.datePublished)
+                .format('Do MMMM, h:mm a')
+            }</span>
+      <p>{eachPost?.description}</p>
     </div>
       
-      ))} 
+      
   </div>
-   
+   ))} 
   </div>
 
 </div>

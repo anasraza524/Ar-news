@@ -1,3 +1,4 @@
+import './PostBody.css'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -26,6 +27,7 @@ const getNews =(e)=>{
   
   axios.request(options).then(function (response) {
     console.log(response.data);
+    
   }).catch(function (error) {
     console.error(error);
   });
@@ -33,6 +35,7 @@ const getNews =(e)=>{
 
 
   return (
+    <>
     <Navbar bg="light" expand="lg"  >
       <Container fluid>
         <Navbar.Brand href="#">Ar News</Navbar.Brand>
@@ -88,6 +91,8 @@ const getNews =(e)=>{
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    
+</>
   );
 }
 
