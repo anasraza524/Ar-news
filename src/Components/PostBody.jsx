@@ -44,23 +44,23 @@ useEffect(() => {
 
 
 <div className="row">
-{data.map(eachPost => (
+
   
-  <div className="column"key={eachPost?.name}>
+  <div className="column">
   
-    
-    <div className="content">
+  {data.map(eachPost => (
+    <div className="content"key={eachPost?.name}>
       <img src="/w3images/mountains.jpg" alt="Mountains"  />
        
-          <h3 >{eachPost?.name}</h3>
+          <h3 >{eachPost?.url}</h3>
            
       <p  >Pulished on 15-45-2021</p>
       <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
     </div>
       
-  
+      ))} 
   </div>
-    ))} 
+   
   </div>
 
 </div>
