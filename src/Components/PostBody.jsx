@@ -5,6 +5,7 @@ import moment from 'moment';
 
 import { useState, useEffect } from "react";
 const PostBody = () => {
+
   const [data, setdata] = useState([])
 useEffect(() => {
   const getTrandingNews = ()=>{
@@ -21,7 +22,7 @@ useEffect(() => {
     
     axios.request(options).then(function (response) {
       console.log(response.data);
-      setdata(response.data)
+      setdata(response.data.value)
 
     }).catch(function (error) {
       console.error(error);
@@ -43,47 +44,24 @@ useEffect(() => {
 
 
 <div className="row">
-  <div className="column">
+{data.map(eachPost => (
+  
+  <div className="column"key={eachPost?.name}>
+  
+    
     <div className="content">
       <img src="/w3images/mountains.jpg" alt="Mountains"  />
-       {data.map(eachPost => (
-          <h3 className="post" key={eachPost?.name}></h3>
-          ))}  
+       
+          <h3 >{eachPost?.name}</h3>
+           
       <p  >Pulished on 15-45-2021</p>
       <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
     </div>
+      
+  
   </div>
-  <div className="column">
-    <div className="content">
-    <img src="/w3images/lights.jpg" alt="Lights" />
-      <h3>My Work</h3>
-      <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-    </div>
+    ))} 
   </div>
-  <div className="column">
-    <div className="content">
-    <img src="/w3images/nature.jpg" alt="Nature" />
-      <h3>My Work</h3>
-      <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-    </div>
-  </div>
-  <div className="column">
-    <div className="content">
-    <img src="/w3images/mountains.jpg" alt="Mountains" />
-      <h3>My Work</h3>
-      <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-    </div>
-  </div>
-
-</div>
-
-<div className="content">
-  <img src="/w3images/p3.jpg" alt="Bear" />
-  <h3>Some Other Work</h3>
-  <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-  <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-</div>
-
 
 </div>
   )
